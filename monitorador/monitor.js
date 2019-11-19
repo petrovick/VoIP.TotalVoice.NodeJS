@@ -25,7 +25,7 @@ function Verificar() {
     const {nome: responsavel, telefone } = servidor.responsavel;
     const {nome: server} = servidor;
 
-    const mensagem = `Atencao ${responsavel}, o servidor ${server} nao esta respondendo.`
+    const mensagem = `Atencao ${responsavel}, peco que verifique, pois o servidor ${server} nao esta respondendo.`
 
     totalClient.tts.enviar(
       telefone, 
