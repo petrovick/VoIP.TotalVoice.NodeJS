@@ -1,6 +1,7 @@
+require('dotenv').config()
 const TotalVoice = require('totalvoice-node')
 const axios = require('axios')
-const client = new TotalVoice(process.env.TOKEN)
+const totalClient = new TotalVoice(process.env.TOKEN)
 
 const servidor = 
   {
@@ -21,7 +22,23 @@ function Verificar() {
     console.log(`${servidor.nome} esta no ar.`)
   })
   .catch(() => {
-    const mensagem = `Atencao ${servidor.desenvolvedor.nome}, o servidor ${servidor.nome} nao esta respondendo.`
-    
+    const {nome: responsavel, telefone } = servidor.responsavel;
+    const {nome: server} = servidor;
+
+    const mensagem = `Atencao ${responsavel}, o servidor ${server} nao esta respondendo.`
+
+    totalClient.tts.enviar(
+      telefone, 
+      mensagem, 
+      {
+				velocidade: 2,
+				tipo_voz: "br-Ricardo"
+      }
+    ).then(() => {
+      console.log(`${responsavel} foi avisado.`);
+    });
+
   })
 }
+
+Verificar();
