@@ -1,7 +1,7 @@
 require('dotenv').config()
 const TotalVoice = require('totalvoice-node')
 const axios = require('axios')
-const totalClient = new TotalVoice(process.env.TOKEN)
+const totalClient = new TotalVoice('66cb732b2d07f1bf5b73b36c8af2456f')
 
 const servidor = 
   {
@@ -9,7 +9,7 @@ const servidor =
     url: 'http://localhost:3001',
     responsavel: {
       nome: 'Gabriel Petrovick',
-      telefone: process.env.TELEFONE
+      telefone: '5534998389076'
     }
   }
 
@@ -36,6 +36,9 @@ function Verificar() {
       }
     ).then(() => {
       console.log(`${responsavel} foi avisado.`);
+    })
+    .catch(function(err) {
+      console.log(`${err}`)
     });
 
   })
