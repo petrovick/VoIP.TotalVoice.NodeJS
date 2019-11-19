@@ -5,5 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "totalvoice-node": "^1.8.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }
